@@ -1,0 +1,62 @@
+@model IEnumerable<BeFit.Controllers.StatisticsViewModel>
+
+@{
+    ViewData["Title"] = "Statystyki";
+}
+
+<h1>Moje statystyki treningowe</h1>
+<p class="text-muted">Statystyki z ostatnich 4 tygodni</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ExerciseTypeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TimesPerformed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TotalRepetitions)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AverageWeight)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaxWeight)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ExerciseTypeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TimesPerformed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalRepetitions)
+                    </td>
+                    <td>
+                        @item.AverageWeight.ToString("F2") kg
+                    </td>
+                    <td>
+                        @item.MaxWeight.ToString("F2") kg
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        <p>Brak danych do wyświetlenia. Dodaj sesje treningowe i wykonane ćwiczenia, aby zobaczyć statystyki.</p>
+    </div>
+}
+

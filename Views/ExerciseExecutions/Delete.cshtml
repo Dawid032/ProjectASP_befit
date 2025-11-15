@@ -1,0 +1,57 @@
+@model BeFit.Models.ExerciseExecution
+
+@{
+    ViewData["Title"] = "Usuń wykonane ćwiczenie";
+}
+
+<h1>Usuń wykonane ćwiczenie</h1>
+
+<h3>Czy na pewno chcesz usunąć to wykonane ćwiczenie?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ExerciseType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ExerciseType!.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TrainingSession)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TrainingSession!.StartDateTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Weight)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Weight) kg
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NumberOfSets)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NumberOfSets)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RepetitionsPerSet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RepetitionsPerSet)
+        </dd>
+        <dt class = "col-sm-2">
+            Łączne powtórzenia
+        </dt>
+        <dd class = "col-sm-10">
+            @(Model.NumberOfSets * Model.RepetitionsPerSet)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+    </form>
+</div>
+
