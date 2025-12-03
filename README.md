@@ -274,5 +274,5 @@ Ten projekt został stworzony w celach edukacyjnych.
 
 ## Autor
 
-Projekt ASP.NET Core MVC - BeFit
+Dawid 148985
 
